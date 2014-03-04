@@ -41,61 +41,9 @@ MYGAME.graphics = (function() {
 		
 		context.restore();
 	}
-	
-	function Texture(spec) {
-		var that = {};
-		
-		that.rotateRight = function(elapsedTime) {
-			spec.rotation += spec.rotateRate * (elapsedTime / 1000);
-		};
-		
-		that.rotateLeft = function(elapsedTime) {
-			spec.rotation -= spec.rotateRate * (elapsedTime / 1000);
-		};
-		
-		that.moveLeft = function(elapsedTime) {
-			spec.center.x -= spec.moveRate * (elapsedTime / 1000);
-		};
-		
-		that.moveRight = function(elapsedTime) {
-			spec.center.x += spec.moveRate * (elapsedTime / 1000);
-		};
-		
-		that.moveUp = function(elapsedTime) {
-			spec.center.y -= spec.moveRate * (elapsedTime / 1000);
-		};
-		
-		that.moveDown = function(elapsedTime) {
-			spec.center.y += spec.moveRate * (elapsedTime / 1000);
-		};
-		
-		that.moveTo = function(center) {
-			spec.center = center;
-		};
-		
-		that.draw = function() {
-			context.save();
-			
-			context.translate(spec.center.x, spec.center.y);
-			context.rotate(spec.rotation);
-			context.translate(-spec.center.x, -spec.center.y);
-			
-			context.drawImage(
-				spec.image, 
-				spec.center.x - spec.width/2, 
-				spec.center.y - spec.height/2,
-				spec.width, spec.height);
-			
-			context.restore();
-		};
-		
-		return that;
-	}
-	
 
 	return {
 		clear : clear,
-		Texture : Texture,
 		DrawObject : DrawObject
 	};
 }());

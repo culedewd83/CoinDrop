@@ -72,7 +72,6 @@ MYGAME.makeCoins = function(usa, roman, canadian, range, includeClock){
 				maxDrop: 532 + 25
 		});
 		coins = withClock.concat(coins.slice(coins.length/2, coins.length));
-		//coins = withClock;
 	}
 	
 	return coins;

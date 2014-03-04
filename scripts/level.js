@@ -142,7 +142,8 @@ MYGAME.MakeLevel = function(normal, extra, msg) {
 			countDownEle: document.getElementById('countdown'),
 			scoreEle: document.getElementById('score_cell'),
 			elapsedTime: 0,
-			mouseClicks: []
+			mouseClicks: [],
+			timeToDropCoin: Random.nextRange(100, 1000)
 	};
 	
 	level.update = function(time) {
@@ -202,11 +203,12 @@ MYGAME.MakeLevel = function(normal, extra, msg) {
 			
 			// This will add a coin to the screen every .5 seconds
 			level.elapsedTime += time;
-			if (level.elapsedTime > 500) {
+			if (level.elapsedTime > level.timeToDropCoin) {
 				if (level.coins.length > 0) {
 					level.coinsOnScreen.push(level.coins.pop());
 				}
 				level.elapsedTime = 0;
+				level.timeToDropCoin = Random.nextRange(100, 1000);
 			}
 			
 			// Update the positions of the coins on the screen
